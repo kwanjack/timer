@@ -930,8 +930,8 @@ var StatusIndicator = function StatusIndicator(_ref) {
     }
   });
   var icons = {
-    PLAY: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faPlay"],
-    PAUSE: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faPause"],
+    PLAY: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faPause"],
+    PAUSE: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faPlay"],
     RESET: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faUndo"],
     BEEP: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faBell"]
   };
