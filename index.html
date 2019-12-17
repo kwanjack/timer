@@ -1,0 +1,484 @@
+<!DOCTYPE html><html><head><meta name="viewport" content="width=device-width, initial-scale=1"/><meta charSet="utf-8"/><title>Timer</title><meta name="next-head-count" content="3"/><link rel="preload" href="/timer/_next/static/qaksj1jy9jYFUtJuMn6yo/pages/index.js" as="script"/><link rel="preload" href="/timer/_next/static/qaksj1jy9jYFUtJuMn6yo/pages/_app.js" as="script"/><link rel="preload" href="/timer/_next/static/runtime/webpack-035ac2b14bde147cb4a8.js" as="script"/><link rel="preload" href="/timer/_next/static/chunks/commons.ef9d73c8eb393b00d265.js" as="script"/><link rel="preload" href="/timer/_next/static/runtime/main-ed09a07176b7f60279c4.js" as="script"/><style id="__jsx-1906030069">*{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent;color:white;}.app{font:20px Arial;height:100vh;width:100vw;color:white;}</style></head><body><div id="__next"><div class="app"><div class="editor" style="display:none"><div class="edited-time-display"><div class="input-display-container"><div class="input-display"><div class="slot">0</div><div class="slot">0</div><div class="unit">m</div><div class="slot">0</div><div class="slot">0</div><div class="unit">s</div></div></div><div class="backspace"><svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="backspace" class="svg-inline--fa fa-backspace fa-w-20 " role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><path fill="currentColor" d="M576 64H205.26A63.97 63.97 0 0 0 160 82.75L9.37 233.37c-12.5 12.5-12.5 32.76 0 45.25L160 429.25c12 12 28.28 18.75 45.25 18.75H576c35.35 0 64-28.65 64-64V128c0-35.35-28.65-64-64-64zm-84.69 254.06c6.25 6.25 6.25 16.38 0 22.63l-22.62 22.62c-6.25 6.25-16.38 6.25-22.63 0L384 301.25l-62.06 62.06c-6.25 6.25-16.38 6.25-22.63 0l-22.62-22.62c-6.25-6.25-6.25-16.38 0-22.63L338.75 256l-62.06-62.06c-6.25-6.25-6.25-16.38 0-22.63l22.62-22.62c6.25-6.25 16.38-6.25 22.63 0L384 210.75l62.06-62.06c6.25-6.25 16.38-6.25 22.63 0l22.62 22.62c6.25 6.25 6.25 16.38 0 22.63L429.25 256l62.06 62.06z"></path></svg></div><style jsx="true">
+.edited-time-display {
+  height: 20vh;
+  width: 100vw;
+  background: #2a2b2d;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  font-size: 50px;
+}
+
+.backspace {
+  flex: 1;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+.backspace:active {
+  opacity: 0.5;
+}
+
+.backspace path {
+}
+
+.input-display-container {
+  display: flex;
+  flex-direction: row;
+  flex: 4;
+  align-items: center;
+  justify-content: flex-end;
+}
+.input-display {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: baseline;
+}
+
+.input-display .unit {
+  font-size: 20px;
+  padding: 0 5px;
+}
+
+.slot {
+  color: grey;
+}
+
+</style></div><div class="numpad"><div class="numpad-row"> <button class="pad"><div class="pad-content">1</div></button><button class="pad"><div class="pad-content">2</div></button><button class="pad"><div class="pad-content">3</div></button> </div><div class="numpad-row"> <button class="pad"><div class="pad-content">4</div></button><button class="pad"><div class="pad-content">5</div></button><button class="pad"><div class="pad-content">6</div></button> </div><div class="numpad-row"> <button class="pad"><div class="pad-content">7</div></button><button class="pad"><div class="pad-content">8</div></button><button class="pad"><div class="pad-content">9</div></button> </div><div class="numpad-row"> <button class="pad dull"><div class="pad-content"><svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="angle-left" class="svg-inline--fa fa-angle-left fa-w-8 " role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512"><path fill="currentColor" d="M31.7 239l136-136c9.4-9.4 24.6-9.4 33.9 0l22.6 22.6c9.4 9.4 9.4 24.6 0 33.9L127.9 256l96.4 96.4c9.4 9.4 9.4 24.6 0 33.9L201.7 409c-9.4 9.4-24.6 9.4-33.9 0l-136-136c-9.5-9.4-9.5-24.6-.1-34z"></path></svg></div></button><button class="pad"><div class="pad-content">0</div></button><button class="pad dull"><div class="pad-content"></div></button> </div><style jsx="true">
+
+.numpad {
+  height: 80vh;
+  width: 100vw;
+  background: #202123;
+  display: flex;
+  flex-direction: column;
+}
+.numpad-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex:1;
+}
+
+
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+
+.pad {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 50px;
+}
+
+.submit {
+  animation: 1s ease-out 0s 1 fadeIn;
+}
+
+.pad:active {
+  background: #4d8cf4;
+}
+
+.dull:active {
+  background: grey;
+}
+
+</style></div><style jsx="true">
+  .editor {
+    display: flex;
+    flex-direction: column;
+  }
+</style></div><div class="selector-row" style="display:flex"><div class="selectable selected"><div class="edit-indicator-container"><div class="edit-indicator" style="width:0%;opacity:0.1"></div><div class="edit-background" style="width:0%;opacity:0.1"> </div><div class="edit-icon-container" style="opacity:0.1"><svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="edit" class="svg-inline--fa fa-edit fa-w-18 edit-icon" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path fill="currentColor" d="M402.6 83.2l90.2 90.2c3.8 3.8 3.8 10 0 13.8L274.4 405.6l-92.8 10.3c-12.4 1.4-22.9-9.1-21.5-21.5l10.3-92.8L388.8 83.2c3.8-3.8 10-3.8 13.8 0zm162-22.9l-48.8-48.8c-15.2-15.2-39.9-15.2-55.2 0l-35.4 35.4c-3.8 3.8-3.8 10 0 13.8l90.2 90.2c3.8 3.8 10 3.8 13.8 0l35.4-35.4c15.2-15.3 15.2-40 0-55.2zM384 346.2V448H64V128h229.8c3.2 0 6.2-1.3 8.5-3.5l40-40c7.6-7.6 2.2-20.5-8.5-20.5H48C21.5 64 0 85.5 0 112v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V306.2c0-10.7-12.9-16-20.5-8.5l-40 40c-2.2 2.3-3.5 5.3-3.5 8.5z"></path></svg></div></div><div class="name"> <span class="selector-time-left"><div class="selector-time-quantity">5</div> <div class="selector-time-unit">s</div></span> </div><style>
+.selectable {
+  width: 33.33vw;
+  height: 20vh;
+  background: #2a2b2d;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+  font-size: 40px;
+  position: relative;
+}
+
+.name {}
+
+.selected {
+  background: #4d8cf4;
+}
+
+.edit-indicator-container {
+  height: 20px;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  text-align: center;
+  color: black;
+}
+
+.edit-text {
+  color: black;
+}
+
+.edit-indicator {
+  position: absolute;
+  height: 100%;
+  background: white;
+}
+
+.edit-background {
+  background: white;
+  opacity: 0.5;
+  width: 100%;
+  text-align: center;
+  font-size: 15px;
+  height: 100%;
+  color: black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.edit-icon path{
+  color: black;
+}
+
+.edit-icon-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.selector-time-unit {
+  font-size: 15px;
+}
+
+.selector-time-quantity {}
+.selector-time-left {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  font-size: 100%;
+}
+</style></div><div class="selectable"><div class="edit-indicator-container"><div class="edit-indicator" style="width:0%;opacity:0.1"></div><div class="edit-background" style="width:0%;opacity:0.1"> </div><div class="edit-icon-container" style="opacity:0.1"><svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="edit" class="svg-inline--fa fa-edit fa-w-18 edit-icon" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path fill="currentColor" d="M402.6 83.2l90.2 90.2c3.8 3.8 3.8 10 0 13.8L274.4 405.6l-92.8 10.3c-12.4 1.4-22.9-9.1-21.5-21.5l10.3-92.8L388.8 83.2c3.8-3.8 10-3.8 13.8 0zm162-22.9l-48.8-48.8c-15.2-15.2-39.9-15.2-55.2 0l-35.4 35.4c-3.8 3.8-3.8 10 0 13.8l90.2 90.2c3.8 3.8 10 3.8 13.8 0l35.4-35.4c15.2-15.3 15.2-40 0-55.2zM384 346.2V448H64V128h229.8c3.2 0 6.2-1.3 8.5-3.5l40-40c7.6-7.6 2.2-20.5-8.5-20.5H48C21.5 64 0 85.5 0 112v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V306.2c0-10.7-12.9-16-20.5-8.5l-40 40c-2.2 2.3-3.5 5.3-3.5 8.5z"></path></svg></div></div><div class="name"> <span class="selector-time-left"><div class="selector-time-quantity">30</div> <div class="selector-time-unit">s</div></span> </div><style>
+.selectable {
+  width: 33.33vw;
+  height: 20vh;
+  background: #2a2b2d;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+  font-size: 40px;
+  position: relative;
+}
+
+.name {}
+
+.selected {
+  background: #4d8cf4;
+}
+
+.edit-indicator-container {
+  height: 20px;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  text-align: center;
+  color: black;
+}
+
+.edit-text {
+  color: black;
+}
+
+.edit-indicator {
+  position: absolute;
+  height: 100%;
+  background: white;
+}
+
+.edit-background {
+  background: white;
+  opacity: 0.5;
+  width: 100%;
+  text-align: center;
+  font-size: 15px;
+  height: 100%;
+  color: black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.edit-icon path{
+  color: black;
+}
+
+.edit-icon-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.selector-time-unit {
+  font-size: 15px;
+}
+
+.selector-time-quantity {}
+.selector-time-left {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  font-size: 100%;
+}
+</style></div><div class="selectable"><div class="edit-indicator-container"><div class="edit-indicator" style="width:0%;opacity:0.1"></div><div class="edit-background" style="width:0%;opacity:0.1"> </div><div class="edit-icon-container" style="opacity:0.1"><svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="edit" class="svg-inline--fa fa-edit fa-w-18 edit-icon" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path fill="currentColor" d="M402.6 83.2l90.2 90.2c3.8 3.8 3.8 10 0 13.8L274.4 405.6l-92.8 10.3c-12.4 1.4-22.9-9.1-21.5-21.5l10.3-92.8L388.8 83.2c3.8-3.8 10-3.8 13.8 0zm162-22.9l-48.8-48.8c-15.2-15.2-39.9-15.2-55.2 0l-35.4 35.4c-3.8 3.8-3.8 10 0 13.8l90.2 90.2c3.8 3.8 10 3.8 13.8 0l35.4-35.4c15.2-15.3 15.2-40 0-55.2zM384 346.2V448H64V128h229.8c3.2 0 6.2-1.3 8.5-3.5l40-40c7.6-7.6 2.2-20.5-8.5-20.5H48C21.5 64 0 85.5 0 112v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V306.2c0-10.7-12.9-16-20.5-8.5l-40 40c-2.2 2.3-3.5 5.3-3.5 8.5z"></path></svg></div></div><div class="name"> <span class="selector-time-left"><div class="selector-quantity">1</div><div class="selector-time-unit">m</div><div class="selector-time-quantity">30</div> <div class="selector-time-unit">s</div></span> </div><style>
+.selectable {
+  width: 33.33vw;
+  height: 20vh;
+  background: #2a2b2d;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+  font-size: 40px;
+  position: relative;
+}
+
+.name {}
+
+.selected {
+  background: #4d8cf4;
+}
+
+.edit-indicator-container {
+  height: 20px;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  text-align: center;
+  color: black;
+}
+
+.edit-text {
+  color: black;
+}
+
+.edit-indicator {
+  position: absolute;
+  height: 100%;
+  background: white;
+}
+
+.edit-background {
+  background: white;
+  opacity: 0.5;
+  width: 100%;
+  text-align: center;
+  font-size: 15px;
+  height: 100%;
+  color: black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.edit-icon path{
+  color: black;
+}
+
+.edit-icon-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.selector-time-unit {
+  font-size: 15px;
+}
+
+.selector-time-quantity {}
+.selector-time-left {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  font-size: 100%;
+}
+</style></div><style>
+.selector-row {
+  width: 100vw;
+  height: 20vh;
+  background: #2a2b2d;
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+}
+</style></div><div class="tappable-timer" style="display:flex"><div class="time-left-wrapper"><span style="opacity:1" class="time-left"><div class="time-quantity">5</div> <div class="time-unit">s</div></span></div><div class="reset-indicator-container"><div class="reset-background" style="height:0%;opacity:0;color:rgba(255, 255, 255, 1)"><div class="reset-indicator" style="height:100%;width:0%;opacity:0"></div></div><div class="reset-icon-container" style="opacity:0.1"><div class="reset-text"> RESET </div><svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="undo" class="svg-inline--fa fa-undo fa-w-16 reset-icon" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M212.333 224.333H12c-6.627 0-12-5.373-12-12V12C0 5.373 5.373 0 12 0h48c6.627 0 12 5.373 12 12v78.112C117.773 39.279 184.26 7.47 258.175 8.007c136.906.994 246.448 111.623 246.157 248.532C504.041 393.258 393.12 504 256.333 504c-64.089 0-122.496-24.313-166.51-64.215-5.099-4.622-5.334-12.554-.467-17.42l33.967-33.967c4.474-4.474 11.662-4.717 16.401-.525C170.76 415.336 211.58 432 256.333 432c97.268 0 176-78.716 176-176 0-97.267-78.716-176-176-176-58.496 0-110.28 28.476-142.274 72.333h98.274c6.627 0 12 5.373 12 12v48c0 6.627-5.373 12-12 12z"></path></svg></div></div><div class="progress-wrapper"><div class="progress-indicator" style="opacity:0.3;height:0%"></div></div><div class="status-indicator"><div style="position:absolute;opacity:0"><svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="undo" class="svg-inline--fa fa-undo fa-w-16 " role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M212.333 224.333H12c-6.627 0-12-5.373-12-12V12C0 5.373 5.373 0 12 0h48c6.627 0 12 5.373 12 12v78.112C117.773 39.279 184.26 7.47 258.175 8.007c136.906.994 246.448 111.623 246.157 248.532C504.041 393.258 393.12 504 256.333 504c-64.089 0-122.496-24.313-166.51-64.215-5.099-4.622-5.334-12.554-.467-17.42l33.967-33.967c4.474-4.474 11.662-4.717 16.401-.525C170.76 415.336 211.58 432 256.333 432c97.268 0 176-78.716 176-176 0-97.267-78.716-176-176-176-58.496 0-110.28 28.476-142.274 72.333h98.274c6.627 0 12 5.373 12 12v48c0 6.627-5.373 12-12 12z"></path></svg></div></div><div class="big-status-indicator"><div style="position:absolute;opacity:0"><svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="undo" class="svg-inline--fa fa-undo fa-w-16 " role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M212.333 224.333H12c-6.627 0-12-5.373-12-12V12C0 5.373 5.373 0 12 0h48c6.627 0 12 5.373 12 12v78.112C117.773 39.279 184.26 7.47 258.175 8.007c136.906.994 246.448 111.623 246.157 248.532C504.041 393.258 393.12 504 256.333 504c-64.089 0-122.496-24.313-166.51-64.215-5.099-4.622-5.334-12.554-.467-17.42l33.967-33.967c4.474-4.474 11.662-4.717 16.401-.525C170.76 415.336 211.58 432 256.333 432c97.268 0 176-78.716 176-176 0-97.267-78.716-176-176-176-58.496 0-110.28 28.476-142.274 72.333h98.274c6.627 0 12 5.373 12 12v48c0 6.627-5.373 12-12 12z"></path></svg></div></div><style>
+.tappable-timer {
+  width: 100%;
+  height: 80vh;
+  background: #202123;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.time-left-wrapper {
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-size: 90px;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 50;
+}
+
+.time-left {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  vertical-align: text-bottom;
+  
+}
+
+.time-quantity {
+  vertical-align: text-bottom;
+}
+
+.time-unit {
+  font-size: 30px;
+  vertical-align: text-bottom;
+  margin-right: 10px;
+}
+
+.progress-wrapper {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: -webkit-calc(100% - 0px);
+}
+.progress-indicator {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background: #4d8cf4;
+  width: 100vw;
+}
+
+.flashing-progress-indicator {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background: #4d8cf4;
+  width: 100vw;
+}
+
+.reset-indicator-container {
+  height: 20px;
+  width: 100vw;
+  position: absolute;
+  top: 0;
+  left: 0;
+  text-align: center;
+  color: black;
+}
+
+.reset-text {
+  color: white;
+}
+
+.reset-indicator {
+  position: absolute;
+  height: 100%;
+  background: white;
+}
+
+.reset-background {
+  position: relative;
+  background: black;
+  width: 100%;
+  height: 0%;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+}
+
+.reset-icon-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+
+.status-indicator {
+  position: absolute;
+  bottom: 100px;
+  left: 20px;
+  font-size: 80px;
+  z-index: 30;
+}
+
+.big-status-indicator {
+  align-self: center;
+  width: 100%;
+  height: 100%;
+  font-size: 300px;
+  z-index: 30;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.reset-icon-container path{
+  color: white;
+}
+
+.reset-icon {
+  padding: 5px;
+}
+
+</style></div></div></div><script id="__NEXT_DATA__" type="application/json">{"dataManager":"[]","props":{"pageProps":{}},"page":"/","query":{},"buildId":"qaksj1jy9jYFUtJuMn6yo","assetPrefix":"/timer","nextExport":true,"autoExport":true}</script><script nomodule="" src="/timer/_next/static/runtime/polyfills-f5af81b00d12d923ec0f.js"></script><script async="" data-next-page="/" src="/timer/_next/static/qaksj1jy9jYFUtJuMn6yo/pages/index.js"></script><script async="" data-next-page="/_app" src="/timer/_next/static/qaksj1jy9jYFUtJuMn6yo/pages/_app.js"></script><script src="/timer/_next/static/runtime/webpack-035ac2b14bde147cb4a8.js" async=""></script><script src="/timer/_next/static/chunks/commons.ef9d73c8eb393b00d265.js" async=""></script><script src="/timer/_next/static/runtime/main-ed09a07176b7f60279c4.js" async=""></script></body></html>
